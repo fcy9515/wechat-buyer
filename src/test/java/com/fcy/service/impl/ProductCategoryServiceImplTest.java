@@ -21,7 +21,7 @@ import java.util.List;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class ProductCategoryServiceTest {
+public class ProductCategoryServiceImplTest {
     @Autowired
     private ProductCategoryService productCategoryService;
 
