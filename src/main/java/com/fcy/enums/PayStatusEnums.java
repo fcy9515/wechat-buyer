@@ -7,14 +7,14 @@ import lombok.Getter;
  * Created with IntelliJ IDEA.
  * Description:
  * User: feichangyong
- * Date: 2018-05-02
- * Time: 19:56
+ * Date: 2018-05-08
+ * Time: 23:09
  */
-@Getter
 @AllArgsConstructor
-public enum ProductStatusEnum implements CodeEnums {
-    UP(0, "在架"),
-    DOWN(1, "下架");
+@Getter
+public enum PayStatusEnums {
+    WAIT(0,"等待支付"),
+    SUCCESS(1,"支付成功");
     private Integer code;
-    private String message;
+    private String msg;
 }
