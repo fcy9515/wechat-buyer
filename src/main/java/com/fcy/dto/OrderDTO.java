@@ -1,26 +1,22 @@
-package com.fcy.entity;
+package com.fcy.dto;
 
-import com.fcy.enums.OrderStatusEnums;
-import com.fcy.enums.PayStatusEnums;
+import com.fcy.entity.OrderDetail;
 import lombok.Data;
-import lombok.ToString;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
  * Description:
  * User: feichangyong
- * Date: 2018-05-08
- * Time: 22:34
+ * Date: 2018-05-10
+ * Time: 16:18
  */
-@Entity
 @Data
-@ToString
-public class OrderMaster {
+public class OrderDTO {
     /* 订单编号 */
     @Id
     private String orderId;
@@ -35,11 +31,12 @@ public class OrderMaster {
     /* 订单总金额 */
     private BigDecimal orderAmount;
     /* 订单状态, 默认为新下单 */
-    private Integer orderStatus = OrderStatusEnums.NEW.getCode();
+    private Integer orderStatus;
     /* 支付状态, 默认未支付 */
-    private Integer payStatus = PayStatusEnums.WAIT.getCode();
+    private Integer payStatus;
     /* 创建时间 */
     private Date createTime;
     /* 修改时间 */
     private Date updateTime;
+    private List<OrderDetail> orderDetailList;
 }
