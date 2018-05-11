@@ -28,7 +28,7 @@ public class OrderServiceImplTest {
     @Autowired
     private OrderService orderService;
     private final String BUYER_OPENID = "wx110101";
-
+    private final String ORDER_ID = "10000000005882565901525966525948";
     @Test
     public void create() {
         OrderDTO orderDTO = new OrderDTO();
@@ -54,6 +54,9 @@ public class OrderServiceImplTest {
 
     @Test
     public void findOne() {
+        OrderDTO result = orderService.findOne(ORDER_ID);
+        log.info("【查询单个订单】result={}", result);
+        Assert.assertEquals(ORDER_ID, result.getOrderId());
     }
 
     @Test
