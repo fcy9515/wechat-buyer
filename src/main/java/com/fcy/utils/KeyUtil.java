@@ -10,7 +10,7 @@ import java.util.UUID;
  * Time: 20:32
  */
 public class KeyUtil {
-    public static String getOrderIdByUUId() {
+    public static synchronized String getOrderIdByUUId() {
         int machineId = 1;//最大支持1-9个集群机器部署
         int hashCodeV = UUID.randomUUID().toString().hashCode();
         if (hashCodeV < 0) {//有可能是负数

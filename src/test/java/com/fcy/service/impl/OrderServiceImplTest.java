@@ -2,6 +2,7 @@ package com.fcy.service.impl;
 
 import com.fcy.dto.OrderDTO;
 import com.fcy.entity.OrderDetail;
+import com.fcy.enums.OrderStatusEnums;
 import com.fcy.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -9,6 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -29,6 +32,7 @@ public class OrderServiceImplTest {
     private OrderService orderService;
     private final String BUYER_OPENID = "wx110101";
     private final String ORDER_ID = "10000000005882565901525966525948";
+
     @Test
     public void create() {
         OrderDTO orderDTO = new OrderDTO();
@@ -61,10 +65,16 @@ public class OrderServiceImplTest {
 
     @Test
     public void findList() {
+        PageRequest request = new PageRequest(0, 2);
+        Page<OrderDTO> orderDTOPage = orderService.findList(BUYER_OPENID, request);
+        Assert.assertNotEquals(0, orderDTOPage.getTotalElements());
     }
 
     @Test
     public void cancel() {
+        OrderDTO orderDTO = orderService.findOne(ORDER_ID);
+        OrderDTO result = orderService.cancel(orderDTO);
+        Assert.assertEquals(result.getOrderStatus(),OrderStatusEnums.CANCEL.getCode());
     }
 
     @Test
