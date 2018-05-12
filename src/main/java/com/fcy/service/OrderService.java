@@ -20,7 +20,9 @@ public interface OrderService {
     Page<OrderDTO> findList(String buyerOpenid, Pageable pageable);
     /* 取消订单 */
     OrderDTO cancel(OrderDTO orderDTO);
-    /* 完成订单 */
-    OrderDTO paid(OrderDTO orderDTO);
     /* 支付订单 */
+    OrderDTO paid(OrderDTO orderDTO);
+    /* 完成订单 */
+    OrderDTO finish(OrderDTO orderDTO);
+
 }

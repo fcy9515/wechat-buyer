@@ -3,6 +3,7 @@ package com.fcy.service.impl;
 import com.fcy.dto.OrderDTO;
 import com.fcy.entity.OrderDetail;
 import com.fcy.enums.OrderStatusEnums;
+import com.fcy.enums.PayStatusEnums;
 import com.fcy.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -78,6 +79,16 @@ public class OrderServiceImplTest {
     }
 
     @Test
+    public void finish() {
+        OrderDTO orderDTO = orderService.findOne(ORDER_ID);
+        OrderDTO result = orderService.finish(orderDTO);
+        Assert.assertEquals(OrderStatusEnums.FINISHED.getCode(),result.getOrderStatus());
+    }
+
+    @Test
     public void paid() {
+        OrderDTO orderDTO = orderService.findOne(ORDER_ID);
+        OrderDTO result = orderService.paid(orderDTO);
+        Assert.assertEquals(PayStatusEnums.SUCCESS.getCode(),result.getPayStatus());
     }
 }
