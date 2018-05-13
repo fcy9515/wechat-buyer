@@ -16,28 +16,56 @@
     "msg": "成功",
     "data": [
         {
-            "name": "热销榜",
-            "type": 1,
+            "name": "女生喜欢",
+            "type": 2,
             "foods": [
                 {
-                    "id": "123456",
+                    "id": "110",
                     "name": "南瓜粥",
-                    "price": 1.5,
-                    "description": "很甜的南瓜粥",
-                    "icon": "http://xxx.com",
+                    "price": 1.8,
+                    "description": "好甜的粥",
+                    "icon": "http://xxxxx.jpg"
+                },
+                {
+                    "id": "111",
+                    "name": "小米粥",
+                    "price": 2.1,
+                    "description": "很好喝的粥",
+                    "icon": "http://xxxxx.jpg"
+                },
+                {
+                    "id": "123456",
+                    "name": "小米粥",
+                    "price": 3.2,
+                    "description": "很好喝的粥",
+                    "icon": "http://xxxxx.jpg"
                 }
             ]
         },
         {
-            "name": "好吃的",
+            "name": "女生喜欢",
             "type": 2,
             "foods": [
                 {
-                    "id": "123457",
-                    "name": "慕斯蛋糕",
-                    "price": 10.9,
-                    "description": "美味爽口",
-                    "icon": "http://xxx.com",
+                    "id": "110",
+                    "name": "南瓜粥",
+                    "price": 1.8,
+                    "description": "好甜的粥",
+                    "icon": "http://xxxxx.jpg"
+                },
+                {
+                    "id": "111",
+                    "name": "小米粥",
+                    "price": 2.1,
+                    "description": "很好喝的粥",
+                    "icon": "http://xxxxx.jpg"
+                },
+                {
+                    "id": "123456",
+                    "name": "小米粥",
+                    "price": 3.2,
+                    "description": "很好喝的粥",
+                    "icon": "http://xxxxx.jpg"
                 }
             ]
         }
@@ -57,9 +85,9 @@ POST /wechat-sell/buyer/order/create
 name: "张三"
 phone: "18868822111"
 address: "临潼区"
-openid: "wxec63a88a47560bfd" //用户的微信openid
+openId: "wx110101" //用户的微信openid
 items: [{
-    productId: "1423113435324",
+    productId: "110",
     productQuantity: 2 //购买数量
 }]
 
@@ -67,12 +95,12 @@ items: [{
 
 返回
 
-```
+```json
 {
   "code": 0,
   "msg": "成功",
   "data": {
-      "orderId": "147283992738221" 
+      "orderId": "10000000005882565901525966525948" 
   }
 }
 ```
@@ -86,44 +114,45 @@ GET /wechat-sell/buyer/order/list
 参数
 
 ```
-openid: wxec63a88a47560bfd
+openId: wx110101
 page: 0 //从第0页开始
 size: 10
 ```
 
 返回
 
-```
+```json
 {
-  "code": 0,
-  "msg": "成功",
-  "data": [
-    {
-      "orderId": "161873371171128075",
-      "buyerName": "张三",
-      "buyerPhone": "18868877111",
-      "buyerAddress": "临潼",
-      "buyerOpenid": "wxec63a88a47560bfd",
-      "orderAmount": 0,
-      "orderStatus": 0,
-      "payStatus": 0,
-      "createTime": 1490171219,
-      "updateTime": 1490171219,
-      "orderDetailList": null
-    },
-    {
-      "orderId": "161873371171128076",
-      "buyerName": "张三",
-      "buyerPhone": "18868877111",
-      "buyerAddress": "临潼",
-      "buyerOpenid": "wxec63a88a47560bfd",
-      "orderAmount": 0,
-      "orderStatus": 0,
-      "payStatus": 0,
-      "createTime": 1490171219,
-      "updateTime": 1490171219,
-      "orderDetailList": null
-    }]
+    "code": 0,
+    "msg": "成功",
+    "data": [
+        {
+            "orderId": "10000000005882565901525966525948",
+            "buyerName": "张三",
+            "buyerPhone": "123456789012",
+            "buyerAddress": "陕西",
+            "buyerOpenid": "wx110101",
+            "orderAmount": 6,
+            "orderStatus": 0,
+            "payStatus": 1,
+            "createTime": 1525966526,
+            "updateTime": 1526092998,
+            "orderDetailList": null
+        },
+        {
+            "orderId": "10000000006557022471526140531969",
+            "buyerName": "张三",
+            "buyerPhone": "18868822111",
+            "buyerAddress": "临潼区",
+            "buyerOpenid": "wx110101",
+            "orderAmount": 3.6,
+            "orderStatus": 0,
+            "payStatus": 0,
+            "createTime": 1526140532,
+            "updateTime": 1526140532,
+            "orderDetailList": null
+        }
+    ]
 }
 ```
 
@@ -136,37 +165,49 @@ GET /wechat-sell/buyer/order/detail
 参数
 
 ```
-openid: wxec63a88a47560bfd
-orderId: 161899085773669363
+openid: wx110101
+orderId: 10000000005882565901525966525948
 ```
 
 返回
 
-```
+```json
 {
     "code": 0,
     "msg": "成功",
     "data": {
-          "orderId": "161899085773669363",
-          "buyerName": "李四",
-          "buyerPhone": "18868877111",
-          "buyerAddress": "临潼",
-          "buyerOpenid": "wxec63a88a47560bfd",
-          "orderAmount": 18,
-          "orderStatus": 0,
-          "payStatus": 0,
-          "createTime": 1490177352,
-          "updateTime": 1490177352,
-          "orderDetailList": [
+        "orderId": "10000000005882565901525966525948",
+        "buyerName": "张三",
+        "buyerPhone": "123456789012",
+        "buyerAddress": "陕西",
+        "buyerOpenid": "wx110101",
+        "orderAmount": 6,
+        "orderStatus": 0,
+        "payStatus": 1,
+        "createTime": 1525966526,
+        "updateTime": 1526092998,
+        "orderDetailList": [
             {
-                "detailId": "161899085974995851",
-                "orderId": "161899085773669363",
-                "productId": "157875196362360019",
-                "productName": "招牌奶茶",
-                "productPrice": 9,
+                "detailId": "10000000005700985421525966526238",
+                "orderId": "10000000005882565901525966525948",
+                "productId": "111",
+                "productName": "小米粥",
+                "productPrice": 2.1,
                 "productQuantity": 2,
-                "productIcon": "http://xxx.com",
-                "productImage": "http://xxx.com"
+                "productIcon": "http://xxxxx.jpg",
+                "createTime": 1525263168000,
+                "updateTime": 1525263168000
+            },
+            {
+                "detailId": "10000000017249950081525966526126",
+                "orderId": "10000000005882565901525966525948",
+                "productId": "110",
+                "productName": "南瓜粥",
+                "productPrice": 1.8,
+                "productQuantity": 1,
+                "productIcon": "http://xxxxx.jpg",
+                "createTime": 1525259946000,
+                "updateTime": 1525259946000
             }
         ]
     }
@@ -182,8 +223,7 @@ POST /wechat-sell/buyer/order/cancel
 参数
 
 ```
-openid: wxec63a88a47560bfd
-orderId: 161899085773669363
+
 ```
 
 返回

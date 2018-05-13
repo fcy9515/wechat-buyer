@@ -1,6 +1,8 @@
 package com.fcy.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fcy.entity.OrderDetail;
+import com.fcy.utils.serialize.Date2LongSerialize;
 import lombok.Data;
 
 import javax.persistence.Id;
@@ -35,8 +37,10 @@ public class OrderDTO {
     /* 支付状态, 默认未支付 */
     private Integer payStatus;
     /* 创建时间 */
+    @JsonSerialize(using = Date2LongSerialize.class)
     private Date createTime;
     /* 修改时间 */
+    @JsonSerialize(using = Date2LongSerialize.class)
     private Date updateTime;
     private List<OrderDetail> orderDetailList;
 }
