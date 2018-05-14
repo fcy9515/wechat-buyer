@@ -1,7 +1,7 @@
 ##买家商品API设计:
 商品列表：
 
-`GET /wechat-sell/buyer/product/list`
+`GET /sell/buyer/product/list`
 
 参数
 ```
@@ -76,7 +76,7 @@
 ###创建订单
 
 ```
-POST /wechat-sell/buyer/order/create
+POST /sell/buyer/order/create
 ```
 
 参数
@@ -108,7 +108,7 @@ items: [{
 ###订单列表
 
 ```
-GET /wechat-sell/buyer/order/list
+GET /sell/buyer/order/list
 ```
 
 参数
@@ -159,7 +159,7 @@ size: 10
 ###查询订单详情
 
 ```
-GET /wechat-sell/buyer/order/detail
+GET /sell/buyer/order/detail
 ```
 
 参数
@@ -217,7 +217,7 @@ orderId: 10000000005882565901525966525948
 ###取消订单
 
 ```
-POST /wechat-sell/buyer/order/cancel
+POST /sell/buyer/order/cancel
 ```
 
 参数
@@ -239,7 +239,7 @@ POST /wechat-sell/buyer/order/cancel
 ###获取openid
 
 ```
-重定向到 /wechat-sell/wechat/authorize
+重定向到 /sell/wechat/authorize
 ```
 
 参数
@@ -256,7 +256,7 @@ http://xxx.com/abc?openid=oZxSYw5ldcxv6H0EU67GgSXOUrVg
 
 ###支付订单
 ```
-重定向 /wechat-sell/pay/create
+重定向 /sell/pay/create
 ```
 
 参数
